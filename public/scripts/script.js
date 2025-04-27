@@ -597,8 +597,8 @@ function hardReset() {
 function save() {
   //console.log("saving")
   game.lastSave = Date.now();
-  localStorage.setItem("dodecaSave", JSON.stringify(game));
-  localStorage.setItem("dodecaLastSaved", game.lastSave);
+  window.storageHandler.setItem("dodecaSave", JSON.stringify(game));
+  window.storageHandler.setItem("dodecaLastSaved", game.lastSave);
 }
 
 function setAutoSave() {
@@ -647,7 +647,7 @@ function importGame() {
 
 function load() {
   reset();
-  let loadgame = JSON.parse(localStorage.getItem("dodecaSave"));
+  let loadgame = JSON.parse(window.storageHandler.getItem("dodecaSave"));
   //loadgame.kkkgl();
   if (loadgame != null) {
     loadGame(loadgame);
@@ -5022,7 +5022,9 @@ function updateLarge() {
     maxYellowSigilUpgrades();
   }
 
-  let lastConfirmedSave = parseInt(localStorage.getItem("dodecaLastSaved"));
+  let lastConfirmedSave = parseInt(
+    window.storageHandler.getItem("dodecaLastSaved")
+  );
   if (Date.now() - lastConfirmedSave > 60000) {
     document.getElementById("autosaveWarning").style.display = "block";
     document.getElementById("saveErrorCode").innerHTML = getSaveErrorCode();
@@ -5194,7 +5196,9 @@ function getSaveErrorCode() {
   let _validSave = 0; //first value is whether a valid save exists in the storage.
   let _timeMatches = 0; //second value is whether the time on this save matches the tracked time.
   let _intervalStarted = 0; //Third value is whether autosave interval ever seemingly initialized.
-  let lastConfirmedSave = parseInt(localStorage.getItem("dodecaLastSaved"));
+  let lastConfirmedSave = parseInt(
+    window.storageHandler.getItem("dodecaLastSaved")
+  );
   if (lastConfirmedSave > 0) _validSave = 1;
   if (lastConfirmedSave === game.lastSave) _timeMatches = 1;
   if (autosaveStarted) _intervalStarted = 1;

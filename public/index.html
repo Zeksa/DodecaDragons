@@ -15,7 +15,8 @@
   <title>DodecaDragons</title>
   <link rel="icon" type="image/x-icon" href="img/iconGoldCoins.png">
   <link rel="stylesheet" href="98.css" />
-  <link href="style.css" rel="stylesheet" type="text/css" /> 
+  <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body onclick="updateSmall()">
@@ -1300,6 +1301,9 @@
   <button class="tabButton" id="horrorTabButton" style="position: absolute; top: 30px; left: 85px; min-height: 20px; margin: 0; z-index: 1; display: none"
   onclick="changeTab(5)">Peep the horror</button>
 
+  <button id="watchAdButton" style="position: absolute; display: none; bottom: 5px; left: 5px; min-width: 76px; min-height: 40px; margin: 0; z-index: 1; background-color: yellow;"
+  onclick="window.requestRewardedAd()">Watch an ad to boost your production !</button>
+
   <img src="img/homeIcon.png" id="home" class="clickButton" onclick="posSet(0,0)">
   <div id="navArrows">
     <img src="img/arrowUp.png" id="arrowUp" class="clickButton">
@@ -1318,6 +1322,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="scripts/break_eternity.js"></script>
   <script src="scripts/Mousetrap.js"></script>
+  <script src="scripts/crazygames.js"></script>
   <script src="scripts/trads/en.js"></script>
   <script src="scripts/trads/trads.js"></script>
   <script src="scripts/constants.js"></script>

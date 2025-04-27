@@ -18,7 +18,7 @@ for (let i = 0; i < 47; i++) {
 }
 
 inputVars = {
-  isMobile: true, // mobileCheck(),
+  isMobile: mobileCheck(),
   keyInputX: 0,
   keyInputY: 0,
   keySpeedX: 0,
