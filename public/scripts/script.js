@@ -1128,6 +1128,8 @@ function loadGame(loadgame) {
     }
   }
   //Cyan sigil stuff
+  if (game.unlocks < 10)
+    document.getElementById("horrorTabButton").style.display = "none";
   if (game.unlocks >= 10) {
     if (game.confirmations[1] == false) {
       document.getElementsByClassName("confirmationToggle")[1].style.border =
@@ -1136,6 +1138,7 @@ function loadGame(loadgame) {
       document.getElementsByClassName("confirmationToggle")[1].style.border =
         "2px solid #0f0";
     }
+    document.getElementById("horrorTabButton").style.display = "block";
     document.getElementsByClassName("box")[11].style.display = "block";
     document.getElementsByClassName("resourceRow")[7].style.display = "block";
     document.getElementsByClassName("confirmationToggle")[1].style.display =
