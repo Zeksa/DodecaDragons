@@ -597,7 +597,7 @@ function hardReset() {
 function save() {
   //console.log("saving")
   game.lastSave = Date.now();
-  window.storageHandler.setItem("dodecaSave", JSON.stringify(game));
+  window.storageHandler.setItem("dodecaSave", btoa(JSON.stringify(game)));
 }
 
 function setAutoSave() {
@@ -646,7 +646,7 @@ function importGame() {
 
 function load() {
   reset();
-  let loadgame = JSON.parse(window.storageHandler.getItem("dodecaSave"));
+  let loadgame = JSON.parse(atob(window.storageHandler.getItem("dodecaSave")));
   //loadgame.kkkgl();
   if (loadgame != null) {
     loadGame(loadgame);
