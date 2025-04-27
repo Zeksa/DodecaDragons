@@ -5282,7 +5282,7 @@ function changeGameSpeed(speed) {
 }
 
 let boostInterval;
-const boostTime = 60 * 1000 * 3;
+const boostTime = 60 * 1000 * 2;
 function boostSpeed() {
   if (boostInterval) clearInterval(boostInterval);
   boostDate = new Date();
@@ -5294,7 +5294,7 @@ function boostSpeed() {
     } else {
       document.getElementById("watchAdButton").style.display = "none";
       document.getElementById("boostSpeedText").style.display = "block";
-      changeGameSpeed(10);
+      changeGameSpeed(5);
 
       const secondsLeft = Math.floor(
         (boostTime - (new Date() - boostDate)) / 1000
@@ -5306,5 +5306,5 @@ function boostSpeed() {
 
   setTimeout(() => {
     document.getElementById("watchAdButton").style.display = "block";
-  }, boostTime * 2);
+  }, boostTime * 3);
 }
