@@ -648,11 +648,10 @@ function importGame() {
 function load() {
   window.CrazyGames.SDK.game.loadingStart();
   reset();
-  let loadgame = JSON.parse(
-    atob(window.CrazyGames.SDK.data.getItem("dodecaSave"))
-  );
+  const save = window.CrazyGames.SDK.data.getItem("dodecaSave");
   //loadgame.kkkgl();
-  if (loadgame != null) {
+  if (save != null) {
+    const loadgame = JSON.parse(atob(save));
     loadGame(loadgame);
   } else {
     document.getElementById("loadingScreenCover").style.display = "none";

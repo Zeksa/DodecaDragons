@@ -15,4 +15,12 @@ window.CrazyGames.SDK.init().then(() => {
     };
     window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
   };
+
+  if (!mobileCheck()) {
+    setInterval(() => {
+      window.CrazyGames.SDK.banner.requestResponsiveBanner(
+        "responsive-banner-container"
+      );
+    }, 1000 * 61);
+  }
 });
