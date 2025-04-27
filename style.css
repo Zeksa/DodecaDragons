@@ -1,40 +1,41 @@
-@font-face{
-    font-family:"Pixelated MS Sans Serif";
-    font-style:normal;
-    font-weight:400;
-    src:url(fonts/ms_sans_serif.woff) format("woff");
-    src:url(fonts/ms_sans_serif.woff2) format("woff2")
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/ms_sans_serif.woff) format("woff");
+  src: url(fonts/ms_sans_serif.woff2) format("woff2");
 }
-@font-face{
-    font-family:"Pixelated MS Sans Serif";
-    font-style:normal;
-    font-weight:700;
-    src:url(fonts/ms_sans_serif_bold.woff) format("woff");
-    src:url(fonts/ms_sans_serif_bold.woff2) format("woff2")
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/ms_sans_serif_bold.woff) format("woff");
+  src: url(fonts/ms_sans_serif_bold.woff2) format("woff2");
 }
-@font-face{
-    font-family:"Alagard";
-    font-style:normal;
-    font-weight:700;
-    src:url(fonts/alagard.woff) format("woff");
+@font-face {
+  font-family: "Alagard";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/alagard.woff) format("woff");
 }
-@font-face{
-    font-family:"VCR OSD MONO";
-    font-style:normal;
-    font-weight:700;
-    src:url(fonts/VCR_OSD_MONO.woff) format("woff");
+@font-face {
+  font-family: "VCR OSD MONO";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/VCR_OSD_MONO.woff) format("woff");
 }
 
 *:disabled {
   pointer-events: none;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
   width: 100%;
   background-color: #222;
-  background-image: url('img/back.png');
+  background-image: url("img/back.png");
   overflow: hidden;
   user-select: none;
   cursor: all-scroll;
@@ -57,7 +58,7 @@ p {
 }
 
 .titleText {
-  font-family: 'Alagard';
+  font-family: "Alagard";
   font-size: 24px;
   margin-top: 6px;
   margin-bottom: 0;
@@ -73,7 +74,7 @@ p {
 }
 
 .status-bar-field {
-  box-shadow: inset -1px -1px #dfdfdf,inset 1px 1px grey;
+  box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px grey;
   flex-grow: 1;
   margin: 0;
   padding: 2px 3px;
@@ -135,7 +136,7 @@ img {
   right: 296px;
 }
 #navArrows {
-  display:none;
+  display: none;
   opacity: 0.7;
 }
 
@@ -158,7 +159,9 @@ img {
   padding-right: 5px;
 }
 
-.fireUpgrade, .blueFireUpgrade, .holyFireUpgrade {
+.fireUpgrade,
+.blueFireUpgrade,
+.holyFireUpgrade {
   text-align: left;
 }
 
@@ -216,7 +219,7 @@ img {
 
 #uraniumMagicUpgrade {
   display: none;
-  background-image: url('img/uraniumButtonBack.png');
+  background-image: url("img/uraniumButtonBack.png");
   background-size: 150px;
   image-rendering: pixelated;
   text-shadow: 1px 1px 0 #bbb;
@@ -235,7 +238,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  justify-self: stretch
+  justify-self: stretch;
 }
 
 .magicChallenge {
@@ -302,7 +305,7 @@ img {
 
 #sigilMagicUpgrade {
   background-color: rgb(70, 70, 70);
-  background-image: url('img/sigilButtonBack.png');
+  background-image: url("img/sigilButtonBack.png");
   background-size: 150px;
   image-rendering: pixelated;
   color: #bdf;
@@ -428,14 +431,16 @@ img {
   display: none;
 }
 
-#blueFireMaxAllButton, #holyFireMaxAllButton {
+#blueFireMaxAllButton,
+#holyFireMaxAllButton {
   position: absolute;
   top: 89px;
   right: 8px;
   display: none;
 }
 
-#blueFireAutoMaxAllButton, #holyFireAutoMaxAllButton {
+#blueFireAutoMaxAllButton,
+#holyFireAutoMaxAllButton {
   position: absolute;
   top: 119px;
   right: 8px;
@@ -444,7 +449,7 @@ img {
 
 #plutoniumTomeUpgrade {
   display: none;
-  background-image: url('img/plutoniumButtonBack.png');
+  background-image: url("img/plutoniumButtonBack.png");
   background-size: 170px;
   image-rendering: pixelated;
   text-shadow: 1px 1px 0 #bbb;
@@ -465,7 +470,7 @@ img {
 #sigilTomeUpgrade {
   display: none;
   background-color: rgb(70, 70, 70);
-  background-image: url('img/sigilButtonBackRed.png');
+  background-image: url("img/sigilButtonBackRed.png");
   background-size: 170px;
   image-rendering: pixelated;
   color: #fbb;
@@ -476,7 +481,9 @@ img {
   text-shadow: 1px 1px 0 #999;
 }
 
-.blueFireBuyMaxButton, .holyFireBuyMaxButton, .plagueBuyMaxButton {
+.blueFireBuyMaxButton,
+.holyFireBuyMaxButton,
+.plagueBuyMaxButton {
   min-width: 46px;
   display: none;
 }
@@ -548,7 +555,9 @@ img {
   text-shadow: 1px 1px 0 #662;
 }
 
-.holyTetrahedronUpgrade, .holyOctahedronUpgrade, .holyDodecahedronUpgrade {
+.holyTetrahedronUpgrade,
+.holyOctahedronUpgrade,
+.holyDodecahedronUpgrade {
   width: 140px;
   height: 60px;
   position: absolute;
@@ -557,7 +566,9 @@ img {
 .holyDodecahedronUpgrade {
   width: 160px;
 }
-.holyTetrahedronUpgrade:disabled, .holyOctahedronUpgrade:disabled, .holyDodecahedronUpgrade:disabled {
+.holyTetrahedronUpgrade:disabled,
+.holyOctahedronUpgrade:disabled,
+.holyDodecahedronUpgrade:disabled {
   color: #666;
   text-shadow: 1px 1px 0 #999;
 }
@@ -577,7 +588,7 @@ img {
 
 #plagueMagicUpgrade {
   background-color: rgb(18, 18, 18);
-  background-image: url('img/plagueButtonBack.png');
+  background-image: url("img/plagueButtonBack.png");
   background-size: 150px;
   image-rendering: pixelated;
   color: #4b4;
@@ -588,7 +599,7 @@ img {
   top: 68px;
   right: 8px;
   display: none;
-	background-color: #8d8;
+  background-color: #8d8;
 }
 
 #plagueAutoMaxAllButton {
@@ -596,12 +607,12 @@ img {
   top: 98px;
   right: 8px;
   display: none;
-	background-color: #8d8;
+  background-color: #8d8;
 }
 
 #oganessonMagicUpgrade {
   background-color: rgb(18, 18, 18);
-  background-image: url('img/oganessonButtonBack.png');
+  background-image: url("img/oganessonButtonBack.png");
   background-size: 150px;
   image-rendering: pixelated;
   color: #74f;
@@ -613,14 +624,20 @@ img {
   text-align: left;
 }
 
-#lightEssenceMaxAllButton, #darkEssenceMaxAllButton, #deathEssenceMaxAllButton, #finalityEssenceMaxAllButton {
+#lightEssenceMaxAllButton,
+#darkEssenceMaxAllButton,
+#deathEssenceMaxAllButton,
+#finalityEssenceMaxAllButton {
   position: absolute;
   top: 28px;
   right: 8px;
   display: none;
 }
 
-#lightEssenceAutoMaxAllButton, #darkEssenceAutoMaxAllButton, #deathEssenceAutoMaxAllButton, #finalityEssenceAutoMaxAllButton {
+#lightEssenceAutoMaxAllButton,
+#darkEssenceAutoMaxAllButton,
+#deathEssenceAutoMaxAllButton,
+#finalityEssenceAutoMaxAllButton {
   position: absolute;
   top: 58px;
   right: 8px;
@@ -628,47 +645,42 @@ img {
 }
 
 #nuclearPastaStateInfo {
-	color: #222;
-	font-family: 'Pixelated MS Sans Serif', Arial;
-	font-size: 11px;
+  color: #222;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 11px;
 }
 
 #nuclearPastaInfoWindow {
-	position: absolute;
+  position: absolute;
   top: 100px;
   left: 100px;
   transform: translate(-50%, -50%);
-	background-color: #fd8;
-	color: #630;
-	transform: none;
-	display: none;
-	padding-right: 12px;
+  background-color: #fd8;
+  color: #630;
+  transform: none;
+  display: none;
+  padding-right: 12px;
 }
 
 #finalDiv {
-	position: absolute;
-	top: 50vh;
-	left: 50vw;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	max-width: 98vw;
-	color: white;
-	display: none;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 98vw;
+  color: white;
+  display: none;
 }
 
 #finalText {
-	font-family: 'Alagard';
-	font-size: 64px;
-	margin: 0;
-	background: -webkit-linear-gradient(45deg, #8ff, white, #8ff);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  font-family: "Alagard";
+  font-size: 64px;
+  margin: 0;
+  background: -webkit-linear-gradient(45deg, #8ff, white, #8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-
-
-
-
 
 #achievementInfo {
   position: absolute;
@@ -678,7 +690,7 @@ img {
   margin: 0;
   padding-top: 2px;
   background-color: #666;
-  background-image: url('img/back.png');
+  background-image: url("img/back.png");
   color: white;
 }
 
@@ -689,26 +701,27 @@ img {
 
 #achievementPopup {
   position: fixed;
-  top:initial;
-  width: 350px; 
-  bottom: 30px; 
-  left: -380px; 
-  transform: none; 
-  z-index: 2; 
+  top: initial;
+  width: 350px;
+  bottom: 30px;
+  left: -380px;
+  transform: none;
+  z-index: 2;
   transition: left 800ms ease-in-out;
 }
 
-#autosaveWarning, #siteMovedBox {
+#autosaveWarning,
+#siteMovedBox {
   position: fixed;
-  top:20px;
-  right:20px;
-  width:200px;
+  top: 20px;
+  right: 20px;
+  width: 200px;
 }
 
 .achievementStar {
-  position:absolute;
-  width:50px;
-  height:50px;
-  z-index:10;
-  left:0px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  left: 0px;
 }
