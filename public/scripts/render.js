@@ -670,6 +670,10 @@ document.body.addEventListener("mouseup", (e) => {
 
 document.addEventListener("keydown", (event) => {
   processKeyDown(event);
+  const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  if (arrowKeys.includes(event.key)) {
+    event.preventDefault();
+  }
 });
 document.addEventListener("keyup", (event) => {
   processKeyUp(event);
