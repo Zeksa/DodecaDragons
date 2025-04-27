@@ -16,15 +16,27 @@ window.CrazyGames.SDK.init().then(() => {
     window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
   };
 
-  setInterval(() => {
+  const ad = () => {
     const windowWidth = window.innerWidth;
 
-    if (windowWidth < 768) {
+    if (windowWidth > 768) {
       window.CrazyGames.SDK.banner.requestResponsiveBanner(
         "responsive-banner-container"
       );
     } else {
       window.CrazyGames.SDK.banner.clearBanner("responsive-banner-container");
     }
+
+    if (windowWidth > 1024) {
+      window.CrazyGames.SDK.banner.requestResponsiveBanner(
+        "responsive-banner-container-h"
+      );
+    } else {
+      window.CrazyGames.SDK.banner.clearBanner("responsive-banner-container-h");
+    }
+  };
+
+  setInterval(() => {
+    ad();
   }, 1000 * 61);
 });
