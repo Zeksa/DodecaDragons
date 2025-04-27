@@ -563,9 +563,6 @@ function touchDown(event) {
 function touchMove(event) {
   if (renderVars.isAutoPanning) return;
 
-  // Afficher les touches et la distance du pinch
-  let logContent = "";
-
   // Vérifier les touches actives
   for (let i = 0; i < event.changedTouches.length; i++) {
     if (event.changedTouches[i].identifier === inputVars.lastTouch) {
@@ -586,28 +583,28 @@ function touchMove(event) {
   }
 
   // Vérifier le pinch zoom (deux doigts)
-  if (event.touches.length === 2) {
-    const touch1 = event.touches[0];
-    const touch2 = event.touches[1];
-    const dx = touch2.pageX - touch1.pageX;
-    const dy = touch2.pageY - touch1.pageY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+  // if (event.touches.length === 2) {
+  //   const touch1 = event.touches[0];
+  //   const touch2 = event.touches[1];
+  //   const dx = touch2.pageX - touch1.pageX;
+  //   const dy = touch2.pageY - touch1.pageY;
+  //   const distance = Math.sqrt(dx * dx + dy * dy);
 
-    logContent += "Pinch detected: " + event.touches.length + " touches<br>";
-    logContent += "Distance between touches: " + distance + "<br>";
+  //   logContent += "Pinch detected: " + event.touches.length + " touches<br>";
+  //   logContent += "Distance between touches: " + distance + "<br>";
 
-    if (inputVars.lastPinchDistance != null) {
-      let delta = distance - inputVars.lastPinchDistance;
-      if (Math.abs(delta) > 5) {
-        if (delta > 0) {
-          zoomIn();
-        } else {
-          zoomOut();
-        }
-      }
-    }
-    inputVars.lastPinchDistance = distance;
-  }
+  //   if (inputVars.lastPinchDistance != null) {
+  //     let delta = distance - inputVars.lastPinchDistance;
+  //     if (Math.abs(delta) > 5) {
+  //       if (delta > 0) {
+  //         zoomIn();
+  //       } else {
+  //         zoomOut();
+  //       }
+  //     }
+  //   }
+  //   inputVars.lastPinchDistance = distance;
+  // }
 }
 
 function touchUp(event) {
@@ -633,11 +630,13 @@ function zoomIn() {
   let currentZoom = Number(document.body.style.zoom || 1);
   document.body.style.zoom = (currentZoom + 0.05).toFixed(2);
 }
+document.getElementById("zoomIn").addEventListener("click", zoomIn);
 
 function zoomOut() {
   let currentZoom = Number(document.body.style.zoom || 1);
   document.body.style.zoom = (currentZoom - 0.05).toFixed(2);
 }
+document.getElementById("zoomOut").addEventListener("click", zoomOut);
 
 function mobileDebug(inputString) {
   document.getElementById("devinfo").innerHTML = inputString;

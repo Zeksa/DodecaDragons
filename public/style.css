@@ -124,16 +124,26 @@ img {
   right: 8px;
 }
 #arrowRight {
-  right: 80px;
+  right: 8px;
+  bottom: 70px;
 }
 #arrowLeft {
-  right: 152px;
+  right: 80px;
+  bottom: 70px;
 }
 #arrowDown {
-  right: 224px;
+  right: 152px;
+  bottom: 70px;
 }
 #arrowUp {
-  right: 296px;
+  right: 224px;
+  bottom: 70px;
+}
+#zoomIn {
+  right: 80px;
+}
+#zoomOut {
+  right: 152px;
 }
 #navArrows {
   display: none;
