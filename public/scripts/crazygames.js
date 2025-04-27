@@ -16,11 +16,15 @@ window.CrazyGames.SDK.init().then(() => {
     window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
   };
 
-  if (!mobileCheck()) {
-    setInterval(() => {
+  setInterval(() => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 768) {
       window.CrazyGames.SDK.banner.requestResponsiveBanner(
         "responsive-banner-container"
       );
-    }, 1000 * 61);
-  }
+    } else {
+      window.CrazyGames.SDK.banner.clearBanner("responsive-banner-container");
+    }
+  }, 1000 * 61);
 });
