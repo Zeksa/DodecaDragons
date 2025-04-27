@@ -201,7 +201,6 @@ function buyDarkMagicUpgrade(x) {
         2
       );
     if (x == 8) {
-      document.getElementById("horrorTabButton").style.display = "block";
       document.getElementsByClassName("box")[11].style.display = "block";
       document.getElementsByClassName("resourceRow")[7].style.display = "block";
       document.getElementsByClassName("confirmationToggle")[1].style.display =
