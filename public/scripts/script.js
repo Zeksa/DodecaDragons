@@ -539,6 +539,7 @@ function reset() {
   document.getElementsByClassName("fireUpgrade")[5].style.display = "none";
   document.getElementById("fireMaxAllButton").style.display = "none";
   document.getElementById("platinumMaxAllButton").style.display = "none";
+  document.getElementById("watchAdButton").style.display = "none";
   document.getElementsByClassName("platinumUpgrade")[6].style.display = "none";
   document.getElementById("magicUpgradeBuyMaxButton").style.display = "none";
   document.getElementById("uraniumMaxAllButton").style.display = "none";
@@ -2409,6 +2410,7 @@ function updateSmall() {
         game.blood.add(1).log10().add(1)
       );
   }
+
   document.getElementById("gold").textContent = format(game.gold, 0);
   document.getElementById("goldPerSecond").textContent = format(
     game.goldPerSecond,
@@ -5278,14 +5280,13 @@ function changeGameSpeed(speed) {
 }
 
 let boostInterval;
-const boostTime = 60 * 1000 * 5;
+const boostTime = 60 * 1000 * 3;
 function boostSpeed() {
   if (boostInterval) clearInterval(boostInterval);
   boostDate = new Date();
   boostInterval = setInterval(function () {
     if (new Date() - boostDate > boostTime) {
       changeGameSpeed(1);
-      document.getElementById("watchAdButton").style.display = "block";
       document.getElementById("boostSpeedText").style.display = "none";
       clearInterval(boostInterval);
     } else {
@@ -5300,4 +5301,8 @@ function boostSpeed() {
         "Production is boosted for " + secondsLeft + " seconds";
     }
   }, 1000);
+
+  setTimeout(() => {
+    document.getElementById("watchAdButton").style.display = "block";
+  }, boostTime * 2);
 }

@@ -20,8 +20,6 @@ window.CrazyGames.SDK.init().then(() => {
     };
     window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
   };
-
-  document.getElementById("watchAdButton").style.display = "block";
 });
 
 window.storageHandler = {
