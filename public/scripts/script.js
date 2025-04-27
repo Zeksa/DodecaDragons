@@ -2234,10 +2234,6 @@ function fixSaveVersion(oldVersion) {
 }
 
 timeStopped = false;
-timeStopSound = new Audio("img/timeStop.mp3");
-timeStopSound.volume = 0.2;
-timeResumeSound = new Audio("img/timeResume.mp3");
-timeResumeSound.volume = 0.2;
 
 //Small update (occurs every 150ms)
 function updateSmall() {
@@ -5183,22 +5179,6 @@ setInterval(timePlayedUp, 100);
 
 function changeDragonName() {
   game.dragonName = document.getElementById("dragonNameBox").value;
-}
-
-function timeStopStart() {
-  if (!timeStopped) {
-    timeStopped = true;
-    timeStopSound.play();
-    setTimeout(function () {
-      document.body.style.filter = "grayscale(100%)";
-    }, 500);
-  } else {
-    timeStopped = false;
-    timeResumeSound.play();
-    setTimeout(function () {
-      document.body.style.filter = "none";
-    }, 500);
-  }
 }
 
 //The big finale (saving this for later)
