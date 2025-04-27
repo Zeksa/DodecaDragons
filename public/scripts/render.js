@@ -563,7 +563,10 @@ function touchDown(event) {
 function touchMove(event) {
   if (renderVars.isAutoPanning) return;
 
-  //need to iterate through and make sure one of the moved touches is the active touch
+  // Afficher les touches et la distance du pinch
+  let logContent = "";
+
+  // Vérifier les touches actives
   for (let i = 0; i < event.changedTouches.length; i++) {
     if (event.changedTouches[i].identifier === inputVars.lastTouch) {
       let thisTouch = event.changedTouches[i];
@@ -572,11 +575,7 @@ function touchMove(event) {
       if (inputVars.touchIsDown && bigFinishPoint == 0) {
         renderVars.diffX = thisTouch.pageX - inputVars.currentTouchPos[0];
         renderVars.diffY = thisTouch.pageY - inputVars.currentTouchPos[1];
-        //if (Math.abs(renderVars.diffX) + Math.abs(renderVars.diffY) > 8) {
-        if (
-          Date.now() - renderVars.lastRender >= 8 &&
-          Math.abs(renderVars.diffX) + Math.abs(renderVars.diffY) > 8
-        ) {
+        if (Math.abs(renderVars.diffX) + Math.abs(renderVars.diffY) > 8) {
           render(
             renderVars.posX + renderVars.diffX,
             renderVars.posY + renderVars.diffY
@@ -584,6 +583,30 @@ function touchMove(event) {
         }
       }
     }
+  }
+
+  // Vérifier le pinch zoom (deux doigts)
+  if (event.touches.length === 2) {
+    const touch1 = event.touches[0];
+    const touch2 = event.touches[1];
+    const dx = touch2.pageX - touch1.pageX;
+    const dy = touch2.pageY - touch1.pageY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    logContent += "Pinch detected: " + event.touches.length + " touches<br>";
+    logContent += "Distance between touches: " + distance + "<br>";
+
+    if (inputVars.lastPinchDistance != null) {
+      let delta = distance - inputVars.lastPinchDistance;
+      if (Math.abs(delta) > 5) {
+        if (delta > 0) {
+          zoomIn();
+        } else {
+          zoomOut();
+        }
+      }
+    }
+    inputVars.lastPinchDistance = distance;
   }
 }
 
@@ -603,6 +626,17 @@ function clearTouch() {
   renderVars.posY = renderVars.posY + renderVars.diffY;
   renderVars.diffX = 0;
   renderVars.diffY = 0;
+  inputVars.lastPinchDistance = null;
+}
+
+function zoomIn() {
+  let currentZoom = Number(document.body.style.zoom || 1);
+  document.body.style.zoom = (currentZoom + 0.05).toFixed(2);
+}
+
+function zoomOut() {
+  let currentZoom = Number(document.body.style.zoom || 1);
+  document.body.style.zoom = (currentZoom - 0.05).toFixed(2);
 }
 
 function mobileDebug(inputString) {
