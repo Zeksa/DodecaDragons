@@ -645,6 +645,7 @@ function importGame() {
 }
 
 function load() {
+  window.CrazyGames.SDK.game.loadingStart();
   reset();
   let loadgame = JSON.parse(atob(window.storageHandler.getItem("dodecaSave")));
   //loadgame.kkkgl();
@@ -653,6 +654,8 @@ function load() {
   } else {
     document.getElementById("loadingScreenCover").style.display = "none";
   }
+  window.CrazyGames.SDK.game.loadingStop();
+  window.CrazyGames.SDK.game.gameplayStart();
 }
 
 //load()
