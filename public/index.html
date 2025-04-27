@@ -62,15 +62,15 @@
       </div>
     </div>
     <div class="window-body">
-      <button style="width: 142px; margin-top: 4px" onclick="save()">&#8202;&#8202;Manual save</button><br>
-      <button style="width: 142px; background-color: #daa" onclick="hardReset()">&#8202;&#8202;Hard reset</button>
-      <hr>
+      <!-- <button style="width: 142px; margin-top: 4px" onclick="save()">&#8202;&#8202;Manual save</button><br> -->
+      <button style="width: 142px; margin-top: 4px; background-color: #daa" onclick="hardReset()">&#8202;&#8202;Hard reset</button>
+      <!-- <hr>
       <button style="min-width: 68px" onclick="exportGame()">&#8202;&#8202;Export</button>
       <button style="min-width: 68px" onclick="importGame()">Import</button><br>
       <input id="exportField" style="width: 142px; margin-left: 4px; margin-bottom: 4px" type="text" placeholder="paste import string here"></input>
       <hr>
       <button id="backgroundPatternButton" style="width: 142px"
-        onclick="changeBackgroundPattern()">&#8202;&#8202;Background pattern: On</button><br>
+        onclick="changeBackgroundPattern()">&#8202;&#8202;Background pattern: On</button><br> -->
       <div id="confirmationToggleBox" style="display: none;">
         <hr>
         <center>
@@ -875,8 +875,7 @@
       <div style="margin-top: 8px; background-color: #111; width: 100%; border-top: 4px solid #666; border-bottom: 4px solid #666">
         <p style="text-align: center"><a class="titleText" style="font-size: 36px; color: #ca1; text-shadow: 3px 3px #555">DodecaDragons</a><br><a style="color: #666">v1.0.1 (THE FINAL UPDATE) <span id="inDevSpan"></span></a></p>
       </div>
-			<p id ="devinfo" style="position: absolute; top: 120px; right: 4px; text-align: right; margin: 0"><a href="changelog.txt" target="_blank">Changelog</a></p>
-      <p style="margin-top: 6px">Created by <a style="color: #50a">Demonin</a><br>Co-developed by <a style="color: #a0a">Cornucanis</a><br>Additional spriting by <a style="color: #a00">Zaxolotl</a></p>
+      <p style="margin-top: 6px">Created by <a style="color: #50a">Demonin</a><br>Co-developed by <a style="color: #a0a">Cornucanis</a><br>Additional spriting by <a style="color: #a00">Zaxolotl</a><br>CrazyGames port by <a style="color: #50a">Zeksa</a></p>
       <p style="color: #666">Move around by clicking and dragging.<br>If you find the text is too small,
         you might want to zoom in the window :)</p>
       <p style="text-align: center">&#8202;&#8202;Time played: <a id="timePlayed">0:00:00</a></p>
@@ -885,15 +884,6 @@
       <span id="hotkeySpan">
       </span>
       <p style="color: #666">You can also press/hold enter to repeat the last button you pressed!</p>
-      <hr>
-			<div style="display: inline-block; width: 1fr">
-				<p style="color: #008; margin-bottom: 4px">&#8202;&#8202;Want to discuss or suggest for<br>&#8202;&#8202;the game? Feel free to join our<br>discord community!</p>
-				<center><a href="https://discord.gg/7PChmUV3wk" target="_blank"><img src="img/discordIcon.png" style="pointer-events: auto"></a></center>
-			</div>
-      <div style="display: inline-block; width: 1fr; border-left: 2px solid #666">
-				<p style="color: #800; margin-bottom: 4px">Want to get early access to<br>future updates? Consider<br>supporting me on Patreon! :)</p>
-				<center><a href="https://www.patreon.com/Demonin" target="_blank"><img src="img/patreonIcon.png" style="pointer-events: auto"></a></center>
-			</div>
     </div>
   </div>
 
@@ -1303,6 +1293,7 @@
 
   <button id="watchAdButton" style="position: absolute; display: none; bottom: 5px; left: 5px; min-width: 76px; min-height: 40px; margin: 0; z-index: 1; background-color: yellow;"
   onclick="window.requestRewardedAd()">Watch an ad to boost your production !</button>
+  <div id="boostSpeedText" style="position: absolute; display: none; bottom: 0px; left: 5px; margin: 0; z-index: 1; color: yellow; font-size: 20px; font-weight: bold;">PRODUCTION IS BOOSTED</div>
 
   <img src="img/homeIcon.png" id="home" class="clickButton" onclick="posSet(0,0)">
   <div id="navArrows">

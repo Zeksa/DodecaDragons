@@ -598,7 +598,6 @@ function save() {
   //console.log("saving")
   game.lastSave = Date.now();
   window.storageHandler.setItem("dodecaSave", JSON.stringify(game));
-  window.storageHandler.setItem("dodecaLastSaved", game.lastSave);
 }
 
 function setAutoSave() {
@@ -4743,13 +4742,14 @@ function updateSmall() {
   //if (game.unlockedAchievements[0] > 8 && game.minerAutoBuyMax) buyMaxMiners()
 }
 updateSmall();
-setInterval(updateSmall, 150);
+let smallInterval = setInterval(updateSmall, 150);
 
 let timeSinceLastUpdate = Date.now();
 //Large update (occurs once per second)
 function updateLarge() {
   if (timeStopped) return;
   timeDivider = Math.max(1000 / (Date.now() - timeSinceLastUpdate), 0.0001);
+  timeDivider = timeDivider / gameSpeed;
 
   //Adds to the user's gold
   if (
@@ -5022,19 +5022,9 @@ function updateLarge() {
     maxYellowSigilUpgrades();
   }
 
-  let lastConfirmedSave = parseInt(
-    window.storageHandler.getItem("dodecaLastSaved")
-  );
-  if (Date.now() - lastConfirmedSave > 60000) {
-    document.getElementById("autosaveWarning").style.display = "block";
-    document.getElementById("saveErrorCode").innerHTML = getSaveErrorCode();
-  } else {
-    document.getElementById("autosaveWarning").style.display = "none";
-  }
-
   timeSinceLastUpdate = Date.now();
 }
-setInterval(updateLarge, 500);
+let largeInterval = setInterval(updateLarge, 500);
 
 function changeTab(x) {
   switch (x) {
@@ -5191,23 +5181,6 @@ function timePlayedUp() {
 
 setInterval(timePlayedUp, 100);
 
-function getSaveErrorCode() {
-  //error code will indicate 3 things:
-  let _validSave = 0; //first value is whether a valid save exists in the storage.
-  let _timeMatches = 0; //second value is whether the time on this save matches the tracked time.
-  let _intervalStarted = 0; //Third value is whether autosave interval ever seemingly initialized.
-  let lastConfirmedSave = parseInt(
-    window.storageHandler.getItem("dodecaLastSaved")
-  );
-  if (lastConfirmedSave > 0) _validSave = 1;
-  if (lastConfirmedSave === game.lastSave) _timeMatches = 1;
-  if (autosaveStarted) _intervalStarted = 1;
-  let errorCode = "" + _validSave + _timeMatches + _intervalStarted;
-  if (_timeMatches === 0)
-    errorCode = errorCode + ": " + (game.lastSave - lastConfirmedSave) / 1000; // if times don't match, this appaends the number of seconds they're off by
-  return errorCode;
-}
-
 function changeDragonName() {
   game.dragonName = document.getElementById("dragonNameBox").value;
 }
@@ -5309,4 +5282,39 @@ function dragonClicky(event) {
         );
     });
   }
+}
+
+let boostDate = new Date();
+let gameSpeed = 1;
+function changeGameSpeed(speed) {
+  gameSpeed = speed;
+  clearInterval(smallInterval);
+  clearInterval(largeInterval);
+  smallInterval = setInterval(updateSmall, 150 / speed);
+  largeInterval = setInterval(updateLarge, 500 / speed);
+}
+
+let boostInterval;
+const boostTime = 60 * 1000 * 5;
+function boostSpeed() {
+  if (boostInterval) clearInterval(boostInterval);
+  boostDate = new Date();
+  boostInterval = setInterval(function () {
+    if (new Date() - boostDate > boostTime) {
+      changeGameSpeed(1);
+      document.getElementById("watchAdButton").style.display = "block";
+      document.getElementById("boostSpeedText").style.display = "none";
+      clearInterval(boostInterval);
+    } else {
+      document.getElementById("watchAdButton").style.display = "none";
+      document.getElementById("boostSpeedText").style.display = "block";
+      changeGameSpeed(10);
+
+      const secondsLeft = Math.floor(
+        (boostTime - (new Date() - boostDate)) / 1000
+      );
+      document.getElementById("boostSpeedText").innerHTML =
+        "Production is boosted for " + secondsLeft + " seconds";
+    }
+  }, 1000);
 }

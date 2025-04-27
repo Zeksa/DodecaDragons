@@ -11,7 +11,7 @@ if (window.CrazyGames) {
       const callbacks = {
         adFinished: () => {
           console.log("End midgame ad");
-          // TODO: Reward
+          boostSpeed();
         },
         adError: (error) => console.log("Error midgame ad", error),
         adStarted: () => console.log("Start midgame ad"),
@@ -22,9 +22,6 @@ if (window.CrazyGames) {
     document.getElementById("watchAdButton").style.display = "block";
   });
 }
-
-document.getElementById("watchAdButton").style.display = "block";
-window.requestRewardedAd = () => {};
 
 window.storageHandler = {
   setItem: (key, value) => localStorage.setItem(key, value),
