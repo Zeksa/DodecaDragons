@@ -1,4 +1,4 @@
-export const en = {
+const en = {
   holyPolyhedron: {
     confirmReset: "Are you sure you want to ascend?",
     noGainTetrahedron:

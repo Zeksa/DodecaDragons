@@ -2,8 +2,6 @@
 //Check that the code at the end of the reset function is updated
 //Remove known bugs and to do list from changelog
 
-const { trads } = require("./trads/trads");
-
 //Stolen code to check if the user is on a mobile device
 window.mobileCheck = function () {
   let check = false;
@@ -42,29 +40,6 @@ document.addEventListener("keydown", (event) => {
     event.preventDefault();
   }
 });
-
-window.isDevVersion = false;
-if (isDevVersion) {
-  document.getElementById("inDevSpan").innerHTML = "INDEV";
-  //FPS stuff
-  window.times = [];
-  window.fps = 0;
-
-  function refreshLoop() {
-    window.requestAnimationFrame(() => {
-      const now = Date.now();
-      while (times.length > 0 && times[0] <= now - 1000) times.shift();
-      times.push(now);
-      fps = times.length;
-      refreshLoop();
-    });
-  }
-  refreshLoop();
-
-  setInterval(function () {
-    document.getElementById("fps").textContent = fps + " fps";
-  }, 200);
-}
 
 //Formatting code taken from RedShark77's games
 function format(ex, acc = 2, max = 9) {
@@ -5047,15 +5022,14 @@ function updateLarge() {
     maxYellowSigilUpgrades();
   }
 
-  if (!isDevVersion) {
-    let lastConfirmedSave = parseInt(localStorage.getItem("dodecaLastSaved"));
-    if (Date.now() - lastConfirmedSave > 60000) {
-      document.getElementById("autosaveWarning").style.display = "block";
-      document.getElementById("saveErrorCode").innerHTML = getSaveErrorCode();
-    } else {
-      document.getElementById("autosaveWarning").style.display = "none";
-    }
+  let lastConfirmedSave = parseInt(localStorage.getItem("dodecaLastSaved"));
+  if (Date.now() - lastConfirmedSave > 60000) {
+    document.getElementById("autosaveWarning").style.display = "block";
+    document.getElementById("saveErrorCode").innerHTML = getSaveErrorCode();
+  } else {
+    document.getElementById("autosaveWarning").style.display = "none";
   }
+
   timeSinceLastUpdate = Date.now();
 }
 setInterval(updateLarge, 500);
