@@ -4,11 +4,6 @@ window.CrazyGames.SDK.init().then(() => {
 
   if (window.CrazyGames.SDK.environment === "disabled") return;
 
-  window.storageHandler = {
-    setItem: (key, value) => window.CrazyGames.SDK.data.setItem(key, value),
-    getItem: (key) => window.CrazyGames.SDK.data.getItem(key),
-  };
-
   window.requestRewardedAd = () => {
     const callbacks = {
       adFinished: () => {
@@ -21,8 +16,3 @@ window.CrazyGames.SDK.init().then(() => {
     window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
   };
 });
-
-window.storageHandler = {
-  setItem: (key, value) => localStorage.setItem(key, value),
-  getItem: (key) => localStorage.getItem(key),
-};

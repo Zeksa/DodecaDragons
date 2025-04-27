@@ -598,7 +598,7 @@ function hardReset() {
 function save() {
   //console.log("saving")
   game.lastSave = Date.now();
-  window.storageHandler.setItem("dodecaSave", btoa(JSON.stringify(game)));
+  window.CrazyGames.SDK.data.setItem("dodecaSave", btoa(JSON.stringify(game)));
 }
 
 function setAutoSave() {
@@ -648,7 +648,9 @@ function importGame() {
 function load() {
   window.CrazyGames.SDK.game.loadingStart();
   reset();
-  let loadgame = JSON.parse(atob(window.storageHandler.getItem("dodecaSave")));
+  let loadgame = JSON.parse(
+    atob(window.CrazyGames.SDK.data.getItem("dodecaSave"))
+  );
   //loadgame.kkkgl();
   if (loadgame != null) {
     loadGame(loadgame);
