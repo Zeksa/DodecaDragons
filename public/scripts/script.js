@@ -598,7 +598,8 @@ function hardReset() {
 function save() {
   //console.log("saving")
   game.lastSave = Date.now();
-  window.CrazyGames.SDK.data.setItem("dodecaSave", btoa(JSON.stringify(game)));
+  saveDataToDb(btoa(JSON.stringify(game)));
+  // window.CrazyGames.SDK.data.setItem("dodecaSave", btoa(JSON.stringify(game)));
 }
 
 function setAutoSave() {
@@ -646,18 +647,19 @@ function importGame() {
 }
 
 function load() {
-  window.CrazyGames.SDK.game.loadingStart();
+  // window.CrazyGames.SDK.game.loadingStart();
   reset();
-  const save = window.CrazyGames.SDK.data.getItem("dodecaSave");
-  //loadgame.kkkgl();
-  if (save != null) {
-    const loadgame = JSON.parse(atob(save));
-    loadGame(loadgame);
-  } else {
-    document.getElementById("loadingScreenCover").style.display = "none";
-  }
-  window.CrazyGames.SDK.game.loadingStop();
-  window.CrazyGames.SDK.game.gameplayStart();
+  getDataFromDb().then((save) => {
+    //loadgame.kkkgl();
+    if (save != null) {
+      const loadgame = JSON.parse(atob(save));
+      loadGame(loadgame);
+    } else {
+      document.getElementById("loadingScreenCover").style.display = "none";
+    }
+  });
+  // window.CrazyGames.SDK.game.loadingStop();
+  // window.CrazyGames.SDK.game.gameplayStart();
 }
 
 //load()

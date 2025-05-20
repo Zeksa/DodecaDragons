@@ -297,7 +297,7 @@ function checkAchievements() {
 
 function processAchievementRewards() {
   if (game.unlockedAchievements[0] > 0) {
-    document.getElementById("watchAdButton").style.display = "block";
+    document.getElementById("watchAdButton").style.display = "none";
   }
 
   //gold rewards
